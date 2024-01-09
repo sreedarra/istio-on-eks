@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: "jwtrequest"
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  jwtRules:
+  - issuer: https://lemur-14.cloud-iam.com/auth/realms/istiojwt
+    jwksUri: https://lemur-14.cloud-iam.com/auth/realms/istiojwt/protocol/openid-connect/certs
